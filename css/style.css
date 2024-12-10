@@ -3,10 +3,10 @@
     padding: 0;
     -moz-user-select: none;
     -khtml-user-select: none;
-    user-select: none;    
+    user-select: none;   
 }
 body{
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -17,8 +17,12 @@ body{
 }
 .image-container{
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.image{
+
+.joker-image{
     width: 200px;
 }
 .text-container{
@@ -27,14 +31,65 @@ body{
     align-items: center;
 }
 .button-container{
-
+    width: 292px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.rng-button{
-    height: 40px;
-    width: 200px;
+.button-container>div{
     background-color: azure;
     border: solid black 2px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.rng-button{
+    height: 40px;
+    width: 200px;
+}
+.inventory-button{
+    height: 40px;
+    width: 40px;
+}
+.craft-button{
+    height: 40px;
+    width: 40px;
+}
+.image{
+    height: 20px;
+}
+.inventory{
+    width: 288px;
+    background-color: beige;
+    border: solid black 2px;
+}
+.joker-info-container{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.joker-info-image-container{
+    width: 150px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.joker-info-stats-container{
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.joker-info-image{
+    width: 80px;
+}
+.amount{
+    float: right;
+}
+.joker-info{
+    margin-right: 40px;
 }

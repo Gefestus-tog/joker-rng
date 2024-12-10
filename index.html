@@ -9,7 +9,7 @@
 <body>
     <main class="main-container">
         <div class="image-container">
-            <img id="image" class="image" src="" alt="">
+            <img id="joker-image" class="joker-image" src="" alt="">
         </div>
         <div class="text-container">
             <div>
@@ -19,9 +19,17 @@
             </div>
         </div>
         <div class="button-container">
-            <div onclick="rng()" class="rng-button">
-                <span>+</span>
+            <div class="craft-button">
+                <img class="image" src="assets/png/hammer.png" alt="hammer">
             </div>
+            <div onclick="roll()" class="rng-button">
+                <img src="assets/png/roll.png" alt="roll" class="image">
+            </div>
+            <div onclick="inventoryLoad()" class="inventory-button">
+                <img id="backpack-image" class="image" src="assets/png/backpack.png" alt="backpack">
+            </div>
+        </div>
+        <div id="inventory" class="inventory">  
         </div>
     </main> 
     <script src="js/index.js"></script>
