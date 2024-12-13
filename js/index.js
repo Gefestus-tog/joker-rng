@@ -396,7 +396,7 @@ let cards = [
         amount: 0,
     },{
         name: "Séance",
-        road: "assets/jokers/uncommon/S%3Fance.webp",
+        road: "assets/jokers/uncommon/SFance.webp",
         chance: "1/500",
         amount: 0,
     },{
@@ -531,7 +531,7 @@ let cards = [
         amount: 0,
     },{
         name: "Oops! All 6s",
-        road: "assetsjokers/uncommon/Oops%21_All_6s.webp",
+        road: "assetsjokers/uncommon/Oops21_All_6s.webp",
         chance: "1/2500",
         amount: 0,
     },{
@@ -726,7 +726,7 @@ let cards = [
         amount: 0,
     },{
         name: "Driver's License",
-        road: "assets/jokers/rare/Driver%27s_License.webp",
+        road: "assets/jokers/rare/Driver27s_License.webp",
         chance: "1/5000000",
         amount: 0,
     },{
@@ -762,7 +762,27 @@ let cards = [
     },
 ]
 
+let things = [
+    {
+        name: "Bronze Amulet",
+        road: "assets/craft-items/amulet.png",
+        cost: [
+            {
+                name: "Joker",
+                amount: 5
+            },{
+                name: "Greedy Joker",
+                amount: 2
+            },{
+                name: "Crafty Joker",
+                amount: 1
+            }
+        ]
+    }
+]
+
 let inventory_open = false
+let crafter_open = false
 
 
 let image = document.querySelector("#joker-image")
@@ -771,9 +791,12 @@ let name_span = document.querySelector("#name")
 let chance_span = document.querySelector("#chance")
 let inventory = document.querySelector("#inventory")
 let backpack_image = document.querySelector("#backpack-image")
+let crafter = document.querySelector("#crafter");
+let hammer_image = document.querySelector("#hammer_image")
+let multi = 10000000
 
-function rng(){
-    let num = Math.floor(Math.random() * 10000000)
+function roll(){
+    let num = Math.floor(Math.random() * multi)
 
     console.log(num)
     if(num > 4960454){
@@ -889,20 +912,44 @@ function rng(){
         cards[rnd + 144].amount += 1
     }
 }
-function roll(){
-    setTimeout(rng,50)
-}
-function inventoryLoad(){
+// function roll(){
+//     setTimeout(rng,50)
+// }
+
+function crafterLoad(){
     if(inventory_open){
         inventory_open = !inventory_open
         inventory.style.display = "none"
-        backpack_image.src  = "assets/png/cross.png"
+        backpack_image.src  = "assets/png/backpack.png"
+    }
+    if(crafter_open){
+        crafter_open = !crafter_open
+        crafter.style.display = "none"
+        hammer_image.src  = "assets/png/hammer.png"
+    }else if(!crafter_open){
+        crafter_open = !crafter_open
+        crafter.style.display = "block"
+        hammer_image.src  = "assets/png/cross.png"
+    }
+}
+
+
+function inventoryLoad(){
+    if(crafter_open){
+        crafter_open = !crafter_open
+        crafter.style.display = "none"
+        hammer_image.src  = "assets/png/hammer.png"
+    }
+    if(inventory_open){
+        inventory_open = !inventory_open
+        inventory.style.display = "none"
+        backpack_image.src  = "assets/png/backpack.png"
     }else if(!inventory_open){
         inventory_open = !inventory_open
         inventory.style.display = "block"
-        backpack_image.src  = "assets/png/backpack.png"
+        backpack_image.src  = "assets/png/cross.png"
         inventory.innerHTML = ''
-    for(let i = 0; i< cards.length -1; i++){
+    for(let i = 0; i< cards.length; i++){
         if(cards[i].amount > 0){
             inventory.innerHTML += `<div class="joker-info-container">
                     <div class="joker-info">
@@ -922,5 +969,16 @@ function inventoryLoad(){
     }
     }
     
+}
+
+function firstBuy(){
+    if(cards[0].amount >= 5 && cards[1].amount >= 2 && cards[14].amount >= 1){
+        cards[0].amount -= 5
+        cards[1].amount -= 2
+        cards[14].amount -= 1
+        multi -= 1000000
+        document.querySelector("#first-buy-button").style.display = "none"
+        document.querySelector("#first-owned-button").style.display = "flex"
+    }
 }
 

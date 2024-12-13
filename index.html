@@ -19,8 +19,8 @@
             </div>
         </div>
         <div class="button-container">
-            <div class="craft-button">
-                <img class="image" src="assets/png/hammer.png" alt="hammer">
+            <div onclick="crafterLoad()" class="craft-button">
+                <img id="hammer_image" class="image" src="assets/png/hammer.png" alt="hammer">
             </div>
             <div onclick="roll()" class="rng-button">
                 <img src="assets/png/roll.png" alt="roll" class="image">
@@ -30,6 +30,31 @@
             </div>
         </div>
         <div id="inventory" class="inventory">  
+        </div>
+        <div id="crafter" class="crafter">  
+            <div class="item-container">
+                <div class="thing-info">
+                    <div class="image-container">
+                        <img src="assets/craft-items/amulet.png" alt="amulet" class="thing-image">
+                    </div>
+                    <div class="text-info-container">
+                        <span class="name">Bronze Amulet</span>
+                    </div>
+                </div>
+                <div class="craft-cost">
+                    <div>
+                        <div id="costs${i}">
+                            <div class="card-cost">5 Joker</div>
+                            <div class="card-cost">2 Greedy Joker</div>
+                            <div class="card-cost">1 Crafty Joker</div>
+                        </div>
+                        <div class="buy-button-container">
+                            <div onclick="firstBuy()"   id="first-buy-button" class="buy-button">Buy</div>
+                            <div id="first-owned-button" class="buy-button">Owned</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main> 
     <script src="js/index.js"></script>
